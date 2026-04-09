@@ -3,11 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Carta para Valeria</title>
+  <title>MIÉRCOLES 8 DE ABRIL DEL 2026</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
+    :root{
+      --bg1:#07040f;
+      --bg2:#12061f;
+      --card:#0f0a1a;
+      --text:#f3eefc;
+      --muted:#c9b8e8;
+      --purple:#a855f7;
+      --purple2:#d946ef;
+      --border:rgba(168,85,247,0.25);
+      --glow:rgba(168,85,247,0.55);
+    }
+
     *{
       margin:0;
       padding:0;
@@ -16,333 +29,329 @@
 
     body{
       min-height:100vh;
-      background: radial-gradient(circle at top, #1b0b2e 0%, #07010e 60%, #000000 100%);
-      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at top, #1a0930 0%, var(--bg1) 35%, #04020a 100%);
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
       display:flex;
       justify-content:center;
       align-items:center;
       padding:30px 14px;
-      color:#f4f0ff;
       overflow-x:hidden;
     }
 
     /* Fondo con destellos */
-    body::before{
-      content:"";
+    .stars{
       position:fixed;
-      inset:0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(191, 90, 255, 0.20), transparent 45%),
-        radial-gradient(circle at 80% 30%, rgba(255, 70, 190, 0.12), transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(90, 200, 255, 0.08), transparent 50%);
-      z-index:-2;
-      filter: blur(10px);
-    }
-
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background-image: 
-        radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
-      background-size: 70px 70px;
-      opacity:0.25;
-      z-index:-1;
-    }
-
-    .container{
+      top:0;
+      left:0;
       width:100%;
-      max-width:860px;
+      height:100%;
+      pointer-events:none;
+      opacity:0.55;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.25) 40%, transparent 41%),
+        radial-gradient(2px 2px at 80% 30%, rgba(255,255,255,0.2) 40%, transparent 41%),
+        radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.18) 40%, transparent 41%),
+        radial-gradient(1.5px 1.5px at 70% 85%, rgba(255,255,255,0.15) 40%, transparent 41%),
+        radial-gradient(1.5px 1.5px at 20% 90%, rgba(255,255,255,0.14) 40%, transparent 41%),
+        radial-gradient(2px 2px at 55% 15%, rgba(255,255,255,0.16) 40%, transparent 41%);
+      filter: blur(0.2px);
+      animation: twinkle 5s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkle{
+      0%{opacity:0.35;}
+      100%{opacity:0.7;}
+    }
+
+    /* Carta */
+    .letter-wrap{
+      width:100%;
+      max-width:920px;
       position:relative;
-    }
-
-    .envelope-glow{
-      position:absolute;
-      inset:-25px;
-      border-radius:30px;
-      background: linear-gradient(120deg, rgba(180,80,255,0.25), rgba(255,70,190,0.18), rgba(130,90,255,0.25));
-      filter: blur(28px);
-      z-index:-1;
-      opacity:0.9;
-      animation: pulseGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow{
-      0%,100%{opacity:0.75; transform:scale(1);}
-      50%{opacity:1; transform:scale(1.03);}
     }
 
     .letter{
-      background: rgba(10, 5, 20, 0.78);
-      border: 1px solid rgba(200, 140, 255, 0.20);
-      border-radius:26px;
-      padding:55px 50px;
-      box-shadow: 0 0 40px rgba(185, 90, 255, 0.18);
-      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(18,6,31,0.96) 0%, rgba(10,4,18,0.96) 100%);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 46px 46px 38px;
+      box-shadow:
+        0 0 50px rgba(0,0,0,0.55),
+        0 0 40px rgba(168,85,247,0.12);
       position:relative;
       overflow:hidden;
+      backdrop-filter: blur(10px);
     }
 
+    /* brillo superior */
     .letter::before{
       content:"";
       position:absolute;
-      inset:0;
-      background:
-        linear-gradient(135deg, rgba(190, 80, 255, 0.10), transparent 40%),
-        linear-gradient(320deg, rgba(255, 70, 190, 0.08), transparent 45%);
-      pointer-events:none;
+      top:-120px;
+      left:-120px;
+      width:320px;
+      height:320px;
+      background: radial-gradient(circle, rgba(168,85,247,0.55), transparent 70%);
+      filter: blur(10px);
+      opacity:0.6;
     }
 
-    .top-border{
-      width:100%;
-      height:4px;
-      border-radius:10px;
-      background: linear-gradient(90deg, #7a2cff, #ff4bd8, #7a2cff);
-      margin-bottom:28px;
-      box-shadow: 0 0 12px rgba(170, 90, 255, 0.65);
+    .letter::after{
+      content:"";
+      position:absolute;
+      bottom:-140px;
+      right:-140px;
+      width:360px;
+      height:360px;
+      background: radial-gradient(circle, rgba(217,70,239,0.45), transparent 70%);
+      filter: blur(10px);
+      opacity:0.55;
+    }
+
+    .header{
+      text-align:center;
+      margin-bottom:30px;
+      position:relative;
+      z-index:2;
     }
 
     .date{
-      font-family: 'Playfair Display', serif;
-      font-size:18px;
-      color:rgba(240, 225, 255, 0.88);
-      letter-spacing:0.3px;
-      margin-bottom:25px;
+      font-size:14px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color: var(--muted);
+      margin-bottom:12px;
     }
 
     .title{
-      font-family: 'Playfair Display', serif;
-      font-size:42px;
+      font-family:"Playfair Display", serif;
+      font-size:38px;
       font-weight:700;
-      text-align:center;
-      margin-bottom:25px;
-      color:#ffffff;
-      text-shadow: 0 0 12px rgba(180, 90, 255, 0.40);
+      letter-spacing:1px;
+      margin-bottom:10px;
+      color: var(--text);
+      text-shadow: 0 0 18px rgba(168,85,247,0.18);
     }
 
-    .subtitle{
-      text-align:center;
-      font-size:14px;
-      letter-spacing:3px;
-      text-transform:uppercase;
-      color:rgba(210, 170, 255, 0.65);
-      margin-bottom:38px;
+    .divider{
+      width:110px;
+      height:2px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, var(--purple), transparent);
+      border-radius:50px;
+      box-shadow: 0 0 18px rgba(168,85,247,0.35);
     }
 
     .content{
-      font-size:17px;
-      line-height:1.9;
-      color:rgba(245, 235, 255, 0.92);
       position:relative;
       z-index:2;
+      font-size:16.6px;
+      line-height:1.9;
+      color: rgba(243,238,252,0.92);
+      padding-top:22px;
     }
 
     .content p{
-      margin-bottom:22px;
+      margin-bottom:18px;
     }
 
-    strong{
+    .content strong{
       color:#ffffff;
       font-weight:700;
-      text-shadow: 0 0 8px rgba(170, 90, 255, 0.30);
+      text-shadow: 0 0 12px rgba(168,85,247,0.15);
     }
 
     .signature{
-      margin-top:40px;
-      padding-top:22px;
-      border-top: 1px solid rgba(200, 140, 255, 0.20);
+      margin-top:28px;
+      text-align:right;
+      font-family:"Playfair Display", serif;
+      font-size:18px;
+      color: rgba(243,238,252,0.96);
+      position:relative;
+      z-index:2;
     }
 
-    .signature .line{
-      font-size:17px;
-      margin-bottom:10px;
-      color:rgba(245, 235, 255, 0.95);
+    .signature span{
+      display:block;
+      margin-top:6px;
+      font-family:"Poppins", sans-serif;
+      font-size:14px;
+      color: var(--muted);
+      letter-spacing:0.8px;
     }
 
     .name{
-      font-family:'Playfair Display', serif;
-      font-size:20px;
-      font-weight:700;
-      color:#ffffff;
-      margin-top:12px;
-      text-shadow: 0 0 10px rgba(180, 90, 255, 0.40);
+      margin-top:14px;
+      font-size:16px;
+      font-weight:600;
+      color: rgba(243,238,252,0.95);
+      text-shadow: 0 0 12px rgba(168,85,247,0.12);
+      font-family:"Poppins", sans-serif;
     }
 
-    .heart-divider{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:12px;
-      margin:30px 0;
-      opacity:0.9;
-    }
-
-    .heart-divider span{
-      width:120px;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(190, 80, 255, 0.75), transparent);
-    }
-
-    .heart-divider i{
-      font-style:normal;
-      font-size:18px;
-      color:#ff4bd8;
-      text-shadow: 0 0 10px rgba(255, 75, 216, 0.65);
-    }
-
-    /* Frase Neon */
+    /* Frase final neon */
     .neon-phrase{
-      margin-top:35px;
+      margin-top:38px;
+      padding:22px 18px;
       text-align:center;
-      padding:26px 20px;
-      border-radius:22px;
-      background: rgba(120, 30, 255, 0.10);
-      border: 1px solid rgba(190, 80, 255, 0.25);
-      box-shadow: 
-        0 0 18px rgba(160, 70, 255, 0.25),
-        0 0 45px rgba(160, 70, 255, 0.18);
+      border-radius:18px;
+      border: 1px solid rgba(168,85,247,0.25);
+      background: rgba(168,85,247,0.07);
       position:relative;
-      overflow:hidden;
-    }
-
-    .neon-phrase::before{
-      content:"";
-      position:absolute;
-      top:-40%;
-      left:-60%;
-      width:200%;
-      height:200%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
-      transform: rotate(25deg);
-      animation: shine 4.5s infinite;
-    }
-
-    @keyframes shine{
-      0%{transform:translateX(-40%) rotate(25deg);}
-      100%{transform:translateX(40%) rotate(25deg);}
+      z-index:2;
+      box-shadow: 0 0 30px rgba(168,85,247,0.10);
     }
 
     .neon-phrase p{
-      position:relative;
-      z-index:2;
-      font-family:'Playfair Display', serif;
-      font-size:18px;
-      line-height:1.8;
-      color:#d9b3ff;
+      font-family:"Playfair Display", serif;
+      font-size:20px;
+      line-height:1.6;
+      color: #d7b2ff;
       text-shadow:
-        0 0 6px rgba(170, 60, 255, 0.90),
-        0 0 18px rgba(170, 60, 255, 0.70),
-        0 0 35px rgba(170, 60, 255, 0.55);
+        0 0 6px rgba(168,85,247,0.9),
+        0 0 16px rgba(217,70,239,0.75),
+        0 0 30px rgba(168,85,247,0.45);
+      animation: neonPulse 2.6s infinite ease-in-out alternate;
     }
 
-    .neon-phrase strong{
-      color:#ffffff;
-      font-weight:800;
-      text-shadow:
-        0 0 6px rgba(200, 90, 255, 1),
-        0 0 20px rgba(200, 90, 255, 0.85),
-        0 0 40px rgba(200, 90, 255, 0.70);
+    @keyframes neonPulse{
+      0%{
+        text-shadow:
+          0 0 6px rgba(168,85,247,0.75),
+          0 0 14px rgba(217,70,239,0.55),
+          0 0 24px rgba(168,85,247,0.35);
+      }
+      100%{
+        text-shadow:
+          0 0 10px rgba(168,85,247,1),
+          0 0 22px rgba(217,70,239,0.9),
+          0 0 40px rgba(168,85,247,0.6);
+      }
     }
 
-    .footer-glow{
-      margin-top:28px;
-      text-align:center;
-      font-size:13px;
-      color:rgba(230, 200, 255, 0.50);
-      letter-spacing:1px;
+    /* Corazon decorativo */
+    .heart{
+      margin-top:14px;
+      font-size:20px;
+      color: var(--purple2);
+      text-shadow: 0 0 18px rgba(217,70,239,0.85);
     }
 
-    @media (max-width: 720px){
+    /* Responsive */
+    @media(max-width:700px){
       .letter{
-        padding:40px 22px;
+        padding: 34px 20px 30px;
       }
       .title{
-        font-size:34px;
+        font-size:30px;
       }
       .content{
-        font-size:16px;
+        font-size:15.5px;
       }
       .neon-phrase p{
-        font-size:16px;
+        font-size:18px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="envelope-glow"></div>
+  <div class="stars"></div>
 
+  <div class="letter-wrap">
     <div class="letter">
-      <div class="top-border"></div>
-
-      <div class="date">Martes, 7 de abril de 2026 — Noche</div>
-
-      <div class="title">Mi amor</div>
-      <div class="subtitle">Una carta escrita con el alma</div>
+      
+      <div class="header">
+        <div class="date">Miércoles, 8 de abril de 2026 — Noche</div>
+        <div class="title">Carta para mi amor</div>
+        <div class="divider"></div>
+      </div>
 
       <div class="content">
+        <p><strong>MI MUJER HERMOSA,</strong></p>
+
         <p>
-          Esta noche me nace escribirte de una forma distinta… con el corazón sin defensas, con el alma abierta, como si cada palabra fuera una caricia que te busca en la distancia. Porque hoy, sin razón aparente, te pensé más de lo normal… y mientras más te pensaba, más me daba cuenta de algo: tú no eres solo parte de mi vida… tú eres lo que le da sentido.
+          Esta noche me senté a escribirte porque no pude aguantarme más las ganas de decirte lo que llevo guardado en el pecho…
+          y es que tú me tienes así: con el corazón inquieto, con la mente llena de ti, y con el alma deseándote como si fueras lo
+          único que necesito para sentirme completo.
         </p>
 
         <p>
-          Te extraño… pero no como se extraña a cualquiera. Te extraño como se extraña lo que se ama con fuerza, como se extraña un abrazo que calma todo, como se extraña un beso que deja el cuerpo temblando y el corazón en paz. Te extraño con esa intensidad que no se puede controlar, con esas ganas que no se apagan, con ese deseo que no se explica… porque tú provocas en mí todo lo que nadie más logra.
+          No sé cómo lo haces… pero desde que llegaste a mi vida, todo cambió. Cambió mi forma de mirar los días, de sentir las noches,
+          de imaginar el futuro. Porque ahora cuando pienso en lo que viene, no me imagino nada si no estás tú. No me imagino celebraciones
+          sin tu risa, ni momentos importantes sin tu mirada, ni tranquilidad sin tu abrazo.
         </p>
 
         <p>
-          Y es que tú, amor… tú tienes algo que me enloquece. Tu forma de ser, tu voz, tu manera de mirar… incluso tu silencio. Me gustas completa, me gustas real, me gustas como eres, con todo lo que llevas dentro. Me gustas tanto que a veces siento que no me alcanza el pecho para todo lo que siento por ti.
+          Te extraño… pero no de una forma normal. Te extraño como se extraña lo que se ama de verdad, como se extraña lo que se siente propio.
+          Te extraño con ganas, con ansiedad bonita, con esa necesidad intensa de tenerte cerca, de tocarte, de besarte despacio… y también de
+          besarte con hambre, con pasión, con todo lo que me despiertas.
         </p>
 
         <p>
-          Esta noche me imagino cerca de ti… tocando tu mano despacio, acercándome a tu oído para decirte lo mucho que te amo, mirándote fijo como si el mundo se apagara y solo quedáramos tú y yo. Me imagino besándote con calma al principio… y después con hambre, con esa pasión que me despiertas, con esa necesidad de ti que no es solo del cuerpo, sino del alma. Porque cuando te deseo, no es solo deseo… es amor ardiendo.
+          Porque tú no solo eres mi novia… <strong>tú eres mi debilidad más hermosa.</strong>
         </p>
 
         <p>
-          Quiero que lo sepas: yo no estoy contigo por costumbre… estoy contigo porque te elijo. Porque me haces sentir vivo. Porque me haces soñar. Porque contigo mi corazón no se conforma… contigo mi corazón quiere todo.
+          A veces me quedo pensando en ti y me dan ganas de decirte todo sin filtros… que me encantas, que me provocas, que me vuelves loco.
+          Que cada vez que recuerdo tu voz, tu piel, tu forma de mirarme… se me acelera el corazón como si me estuvieras besando en ese mismo instante.
         </p>
 
         <p>
-          Y si hoy pudiera pedir un solo regalo, sería tenerte aquí esta noche… abrazarte fuerte, mirarte a los ojos y decirte sin miedo que tú eres mi debilidad más hermosa, mi pensamiento favorito, mi tentación más dulce y mi amor más real.
+          Y lo que más me gusta es que no solo te deseo… también te admiro. Me encanta tu esencia, tu manera de ser, tu energía, tu ternura, tu carácter.
+          Me enamora lo completa que eres, lo especial que te vuelves incluso en los detalles más pequeños.
         </p>
 
         <p>
-          Duerme bonita, mi vida… pero antes de cerrar esos ojos, acuérdate de algo: hay alguien que te ama con locura, que te piensa con ganas, y que daría lo que fuera por estar contigo ahora mismo.
+          <strong>Mi amor… si supieras cuánto te quiero.</strong>
         </p>
 
         <p>
-          <strong>Te amo… y esta noche te deseo más que nunca.</strong>
+          Te quiero con ganas de cuidarte, de respetarte, de hacerte sentir amada. Te quiero con ganas de construir algo real contigo.
+          Te quiero con ganas de ser ese lugar donde siempre puedas descansar, donde siempre puedas sentirte segura.
         </p>
 
-        <div class="heart-divider">
-          <span></span>
-          <i>💜</i>
-          <span></span>
-        </div>
+        <p>
+          Esta noche solo quiero que lo tengas claro:
+        </p>
+
+        <p>
+          <strong>Yo soy tuyo.</strong> Y no por costumbre… sino por elección. Porque tú me haces sentir vivo. Porque tú eres mi paz… y también mi fuego.
+        </p>
+
+        <p>
+          Y si pudiera pedirle algo a la vida, sería tenerte aquí conmigo esta noche… para abrazarte fuerte, para besarte lento, para mirarte a los ojos
+          y decirte en la cara lo que te escribo con el corazón:
+        </p>
+
+        <p>
+          <strong>Te amo… y cada día te deseo más.</strong>
+        </p>
+
+        <p>
+          Buenas noches, mi vida.<br>
+          Sueña conmigo… porque yo voy a soñar contigo.
+        </p>
 
         <div class="signature">
-          <div class="line">Con todo lo que soy,</div>
-          <div class="line"><strong>tu amor ❤️✨</strong></div>
+          Con todo lo que soy,<br>
+          <strong>tu amor.</strong> 💘
           <div class="name">JUAN KALETH MENDOZA PRIMERA 💜</div>
         </div>
 
         <div class="neon-phrase">
           <p>
-            Y si alguna vez dudas de lo que significas para mí, solo recuerda esto:
-            en mi corazón tú no ocupas un lugar… tú eres mi hogar completo, mi paz,
-            mi deseo, mi razón más bonita para seguir, mi sueño más real y mi amor más eterno.
-            Porque yo no solo te quiero… yo te amo con una intensidad que no se apaga,
-            con un sentimiento que crece cada día, y con un corazón que solo sabe pronunciar tu nombre…
-            <strong>VALERIA PETRO VILLAZÓN</strong>
+            Mi niña linda… tú eres el sueño más bonito que la vida me regaló, el abrazo que mi alma siempre buscó,
+            la calma que me llena por dentro y la pasión que me enciende sin avisar.  
+            Y mientras existas tú, yo siempre voy a elegirte, siempre voy a cuidarte, siempre voy a amarte con todo lo que soy,
+            hasta el último latido… <strong>VALERIA PETRO VILLAZÓN</strong>.
           </p>
-        </div>
-
-        <div class="footer-glow">
-          Hecho con amor, en una noche donde solo existías tú.
+          <div class="heart">💜✨</div>
         </div>
 
       </div>
     </div>
   </div>
 </body>
-  </html>
+</html>
